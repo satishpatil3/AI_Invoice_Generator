@@ -123,7 +123,7 @@ const Login = () => {
           login(response.data, token);
 
           setTimeout(() => {
-            window.location.href = "/dashboard";
+            navigate("/dashboard");
           }, 2000);
         } else {
           setError(response.data.message || "Invalid credentials");

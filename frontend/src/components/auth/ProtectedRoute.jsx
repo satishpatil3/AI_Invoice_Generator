@@ -1,23 +1,23 @@
-import { Navigate,Outlet } from "react-router-dom"
-import DashboardLayout from "../layout/DashboardLayout"
-import { useAuth } from "../../context/AuthContext"
+import { Navigate, Outlet } from "react-router-dom";
+import DashboardLayout from "../layout/DashboardLayout";
+import { useAuth } from "../../context/AuthContext";
 
-const ProtectedRoute = ({children}) => {
-    const{isAuthenticated ,loading}=useAuth();
+const ProtectedRoute = () => {
+  const { isAuthenticated, loading } = useAuth();
 
-    if(loading){
-        return <div>Loading ...</div>
-    }
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
-    if(!isAuthenticated){
-        return <Navigate to="/login" replace />;
-    }
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  }
 
   return (
-    <div>
-      <DashboardLayout>{children ? children : <Outlet />}</DashboardLayout>
-    </div>
-  )
-}
+    <DashboardLayout>
+      <Outlet />
+    </DashboardLayout>
+  );
+};
 
-export default ProtectedRoute
+export default ProtectedRoute;
